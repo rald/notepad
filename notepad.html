@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
   <head>
@@ -8,50 +9,48 @@
     <title>notepad</title>
   
     <link rel="icon" type="image/png" href="notepad.png">
-  
-    <style type="text/css">
-  
-      #textArea {
-      	position: absolute;
-      	width: calc( 100% - 40px );
-      	height: calc( 100% - 70px );
-      	border: 1px solid black;
-      	white-space: nowrap;
-      	overflow: auto;
-      	font-family: monospace;
-				font-size: 20px;
-				padding: 10px;
-			}
-      
-      #statusBar {
-      	position: fixed;
-      	width: calc( 100% - 40px );
-      	bottom: 0;
-      	text-align: right;
-      	padding: 5px;
-				font-family: monospace;
-				font-size: 20px;
-      }
-      
-    </style>
+
+	  <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css">
+	  <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
+
+	<style>
+	
+		* {
+			font-family: monospace;
+			font-size: 24px;	
+		}
+	
+		#textArea {
+			margin-top: 20px;
+			height:    550px;
+		}
+	</style>
 
   </head>
 
   <body>
 
-		<textarea
-			id="textArea" 
-			spellcheck="false" 
-			onkeyup="updateStatusBarText(this);" 
-			onmouseup="this.onkeyup();"
-			autofocus></textarea>
+		<div class="container">
 
-    <div id="statusBar">
-      <div id="statusBarText">
-      	<span id="lineNumber">1</span>:<span id="columnNumber">1</span>
-      </div>
-    </div>
-    
+			<div class="content">
+	
+				<textarea
+					class="u-full-width"
+					id="textArea" 
+					spellcheck="false" 
+					onkeyup="updateStatusBarText(this);" 
+					onmouseup="this.onkeyup();"
+					autofocus></textarea>
+	
+				<div id="statusBar">
+					<div id="statusBarText" class="u-pull-right">
+						<span id="lineNumber">1</span>:<span id="columnNumber">1</span>
+					</div>
+					<div class="u-cf"></div>
+				</div>
+	
+			</div>
+
     <script>
       function updateStatusBarText(textArea) {
         var textLines = textArea.value.substr(0, textArea.selectionStart).split("\n");
